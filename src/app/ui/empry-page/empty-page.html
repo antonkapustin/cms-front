@@ -1,0 +1,19 @@
+<div class="page__img-box">
+  <img class="page__img" [src]="img()" alt="img" />
+</div>
+
+<div class="page__text-box">
+  <span class="page__title">{{ title() }}</span>
+  @if(subtitle()) {
+    <span class="page__subtitle">{{ subtitle() }}</span>
+  }
+  
+</div>
+
+
+<app-button
+  [label]="buttonText()"
+  buttonAppearanceType="filled"
+  class="page__button"
+  (click)="onButtonClick()"
+></app-button>

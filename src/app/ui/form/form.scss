@@ -1,0 +1,13 @@
+:host {
+  width: 100%;
+  display: block;
+}
+
+.form {
+  &__controll {
+    --mat-sys-surface-variant: none;
+    --mat-sys-hover-state-layer-opacity: 0;
+    --mat-form-field-filled-container-color: unset;
+    width: 100%;
+  }
+}

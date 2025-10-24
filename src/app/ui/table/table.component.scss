@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  ::ng-deep {
+    .mat-mdc-header-row {
+      background: var(--color-light-gray);
+    }
+    .mdc-data-table__content {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+}
+
+.table {
+  &__box {
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  &__box,
+  &__container {
+    --mat-table-row-item-outline-color: transparent;
+    background: var(--color-white);
+  }
+
+  &__title {
+    font-weight: 900;
+  }
+}

@@ -1,0 +1,26 @@
+<span mat-dialog-title class="products__title">Create new product</span>
+<form [formGroup]="newProductForm" class="products__form">
+  <div class="product__form-box">
+    <app-input label="Product name" controlName="title"></app-input>
+    <app-input label="Product price" controlName="price" type="number"></app-input>
+    <app-input label="Product code" controlName="code"></app-input>
+    <app-autocomplete
+      label="Product category"
+      controlName="categoryName"
+      [options]="(categoryOptions | async) || []"
+    ></app-autocomplete>
+  </div>
+  <app-textarea label="Product description" controlName="description"></app-textarea>
+</form>
+<mat-dialog-actions align="end">
+  <app-button
+    label="Cancel"
+    buttonAppearanceType="filled"
+    mat-dialog-close
+  ></app-button>
+  <app-button
+    label="Create"
+    buttonAppearanceType="filled"
+    (click)="onClose()"
+  ></app-button>
+</mat-dialog-actions>

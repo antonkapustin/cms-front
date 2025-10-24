@@ -1,0 +1,7 @@
+@if(isLoginPage | async) {
+<router-outlet />
+} @else {
+<app-side-bar>
+  <router-outlet />
+</app-side-bar>
+}

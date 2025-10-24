@@ -1,0 +1,16 @@
+<mat-form-field class="form__controll" floatLabel="always">
+  <mat-label>{{ label() | titlecase }}</mat-label>
+  <input
+    type="text"
+    [placeholder]="placeholder()"
+    aria-label="Number"
+    matInput
+    [formControl]="formControl()"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    @for (option of options(); track option) {
+    <mat-option [value]="option.name">{{ option.name }}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

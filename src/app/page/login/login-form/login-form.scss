@@ -1,0 +1,63 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  align-items: center;
+  justify-content: center;
+  max-width: 60%;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.form {
+  &__title {
+    font-size: 35px;
+  }
+  &__subtitle {
+    font-size: 30px;
+  }
+
+  &__title,
+  &__subtitle {
+    font-weight: 900;
+  }
+
+  &__text-box,
+  &__box,
+  &__additional-login {
+    display: flex;
+  }
+
+  &__text-box,
+  &__box {
+    flex-direction: column;
+  }
+
+  &__text-box,
+  &__button-box,
+  &__box,
+  &__additional-login {
+    width: 100%;
+  }
+
+  &__text-box {
+    gap: 5px;
+  }
+
+  &__box {
+    gap: 70px;
+  }
+  &__button-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  &__text {
+    font-size: 12px;
+    color: var(--color-gray);
+  }
+  &__additional-login {
+    align-items: center;
+    gap: 10px;
+  }
+}

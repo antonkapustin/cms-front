@@ -1,0 +1,11 @@
+@if(icon()) {
+<button matFab class="button__fab" [disabled]="disabled()">
+  @if(icon()) {
+  <mat-icon>{{ icon() }}</mat-icon>
+  }
+</button>
+} @else {
+<button [matButton]="buttonAppearanceType()" class="button" [disabled]="disabled()">
+  {{ label() }}
+</button>
+}

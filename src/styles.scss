@@ -1,0 +1,57 @@
+@import "../node_modules/@angular/material/prebuilt-themes/azure-blue.css";
+
+:root {
+  --color-gray: #ced4da;
+  --color-light-gray: #f5f5f5;
+  --color-white: #ffffff;
+  --color-lavander: #f0f0fc;
+  --gradient: linear-gradient(
+    135deg,
+    rgb(49, 44, 0) 0%,
+    rgb(49, 44, 0) 14.286%,
+    rgb(51, 46, 30) 14.286%,
+    rgb(51, 46, 30) 28.571%,
+    rgb(50, 49, 73) 28.571%,
+    rgb(50, 49, 73) 42.857%,
+    rgb(44, 51, 119) 42.857%,
+    rgb(44, 51, 119) 57.143%,
+    rgb(36, 54, 162) 57.143%,
+    rgb(36, 54, 162) 71.429%,
+    rgb(26, 57, 192) 71.429%,
+    rgb(26, 57, 192) 85.714%,
+    rgb(17, 60, 204) 85.714%,
+    rgb(17, 60, 204) 100%
+  );
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("./assets/font/Roboto_Mono/static/RobotoMono-Regular.ttf")
+    format("truetype");
+  font-weight: 400; /* normal */
+  font-style: normal;
+}
+
+/* Пример для Bold */
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("./assets/font/Roboto_Mono/static/RobotoMono-Bold.ttf")
+    format("truetype");
+  font-weight: 700; /* bold */
+  font-style: normal;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Roboto Mono", monospace;
+}
+
+
+* {
+  box-sizing: border-box;
+}

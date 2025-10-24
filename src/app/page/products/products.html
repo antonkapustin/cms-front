@@ -1,0 +1,14 @@
+@let data = productData | async; @if(!data) {
+<app-empty-page
+  img="/assets/products.png"
+  title="No products found?"
+  subtitle="Try to create more new products"
+  buttonText="Create Product"
+  (buttonClick)="createProduct()"
+></app-empty-page>=
+} @else {
+<app-table
+  tableTitle="latest sales"
+  [tableData]="productData | async"
+></app-table>
+}

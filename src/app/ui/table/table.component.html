@@ -1,0 +1,29 @@
+<div class="table__box">
+  <span class="table__title">{{ tableTitle() | titlecase }}</span>
+</div>
+
+@let headerData = headers(); @let data = tableData();
+@if(data?.data.length) {
+  <table mat-table [dataSource]="data?.data" class="table__container">
+  <tr mat-header-row *matHeaderRowDef="headerData"></tr>
+  <tr mat-row *matRowDef="let row; columns: headerData"></tr>
+
+  @for(item of data?.columns; track $index) {
+  <ng-container [matColumnDef]="item.header">
+    <th mat-header-cell *matHeaderCellDef>{{ item.header | titlecase }}</th>
+    <td mat-cell *matCellDef="let element">
+      @switch(item.type){ @case(tableCellType.COMPONENT) {
+      <ng-container 
+        cellHost
+        [component]="item.component"
+        [inputs]="element[item.header]"
+      ></ng-container>
+      } @default {
+      <span>{{ element[item.header] }}</span>
+      } }
+    </td>
+  </ng-container>
+  }
+</table>
+}
+

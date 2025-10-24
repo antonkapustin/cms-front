@@ -1,0 +1,23 @@
+<mat-sidenav-container class="side-bar__container">
+  <mat-sidenav #drawer mode="side" [opened]="isOpen$ | async" [ngClass]="{'side-bar__drawer': !drawer.opened}">
+    <div class="side-bar__header">
+      <span class="side-bar__title">CRM</span>
+    </div>
+    @if(routes.length) {
+    <ul class="side-bar__list">
+      @for(route of routes; track $index) {
+      <li class="side-bar__list-item">
+        <a [routerLink]="route.path" class="side-bar__link" routerLinkActive="side-bar__link_active">
+          <mat-icon>{{ route.icon }}</mat-icon>
+          <span class="side-bar__link-text">{{ route.title | titlecase }}</span>
+        </a>
+      </li>
+      }
+    </ul>
+    }
+  </mat-sidenav>
+  <mat-sidenav-content class="side-bar__content" [ngClass]="{'side-bar__content_closed': !drawer.opened}">
+    <app-header></app-header>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,21 @@
+:host {
+    --mat-card-title-text-size: 1rem;
+    --mat-card-subtitle-text-size: 1.5rem;
+    --mat-card-outlined-outline-width: 0px;
+    ::ng-deep {
+        .mat-mdc-card-header {
+            padding: 25px;
+        }
+        .mat-mdc-card-title-group {
+            align-items: center;
+            gap: 60px;
+        }
+        .mat-mdc-card-header {
+            .mat-icon {
+                height: 30px;
+                width: 30px;
+                font-size: 30px;
+            }
+        }
+    }
+}

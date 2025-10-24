@@ -1,0 +1,8 @@
+<div class="header__box">
+  <app-button icon="menu" (click)="toggleSideBar()"></app-button>
+  <span class="header__route">{{ currentPage$ | async  }}</span>
+</div>
+<div class="header__box">
+  <app-button icon="search" (click)="emitEvent(actionType.SEARCH, $event)"></app-button>
+  <app-button icon="add" (click)="emitEvent(actionType.ADD_NEW, $event)"></app-button>
+</div>

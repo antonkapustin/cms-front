@@ -1,0 +1,16 @@
+.button {
+  --mat-sys-corner-full: 10px;
+  --mat-button-filled-container-height: 50px;
+  --mat-button-tonal-container-height: 50px;
+  width: 100%;
+
+  &__fab {
+    --mat-sys-primary-container: none;
+    --mat-sys-level3: none;
+    --mat-sys-level4: none;
+    --mat-fab-container-shape: 10px;
+    border: 1px solid var(--color-gray);
+    height: 40px;
+    width: 40px;
+  }
+}

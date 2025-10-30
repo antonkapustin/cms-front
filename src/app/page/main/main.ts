@@ -1,53 +1,26 @@
 import { Component, effect, inject } from '@angular/core';
-import { CardComponent } from '../../ui/card/card.component';
-import { TableComponent } from '../../ui/table/table.component';
 import { TableCellType, TableData } from '../../interfaces/table.interface';
 import { ProductService } from '../../services/product.service';
 import { filter, map, Observable, tap } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
 import { ProductNameComponent } from '../../ui/table/table-columns/product-name.component';
 import { HeaderActionService } from '../../services/header-action.service';
 import { HeaderEventType } from '../../interfaces/header-action.interface';
 import { EmptyPageComponent } from '../../ui/empry-page/empty-page';
+import { MatDialog } from '@angular/material/dialog';
+import { StoreComponent } from '../../ui/dialog/store.component/store.component';
+import { Store } from '../../interfaces/store.interface';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CardComponent, TableComponent, AsyncPipe, EmptyPageComponent],
+  imports: [EmptyPageComponent],
   templateUrl: './main.html',
   styleUrl: './main.scss',
 })
 export class Main {
   private _productService = inject(ProductService);
   private _headerActionService = inject(HeaderActionService);
-  productData: Observable<TableData<any>> = this._productService
-    .getAllProducts()
-    .pipe(
-      filter((data) => !!data.length),
-      map((data) => {
-        console.log(data);
-        return {
-          columns: [
-            {
-              header: 'product',
-              component: ProductNameComponent,
-              type: TableCellType.COMPONENT,
-            },
-            {
-              header: 'category',
-            },
-            {
-              header: 'price',
-            },
-          ],
-          data: data.map((item: any) => ({
-            product: { name: item.title, img: item.image },
-            category: item.category,
-            price: item.price,
-          })),
-        };
-      })
-    );
+  private _dialogRef = inject(MatDialog);
 
   constructor() {
     effect(() => {
@@ -58,6 +31,10 @@ export class Main {
           break;
       }
     });
+  }
+
+  openDialog(data?:Store ): void {
+    this._dialogRef.open(StoreComponent, {data}).afterClosed().pipe(tap(console.log)).subscribe();
   }
 
   private _createNewItem(): void {

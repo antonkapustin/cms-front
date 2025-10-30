@@ -1,0 +1,24 @@
+<span mat-dialog-title>Create store</span>
+<form [formGroup]="storeForm" class="store__form">
+  <div class="store__form-box">
+    <app-input label="Store name" controlName="name"></app-input>
+    <app-autocomplete
+      label="Store currency"
+      controlName="currency"
+      [options]="(currencies$ | async) || []"
+    ></app-autocomplete>
+  </div>
+</form>
+<mat-dialog-actions align="end">
+  <app-button
+    label="Cancel"
+    buttonAppearanceType="filled"
+    mat-dialog-close
+  ></app-button>
+  <app-button
+    [label]="data ? 'Update' : 'Create'"
+    buttonAppearanceType="filled"
+    (click)="onClose()"
+    [disabled]="storeForm.invalid"
+  ></app-button>
+</mat-dialog-actions>

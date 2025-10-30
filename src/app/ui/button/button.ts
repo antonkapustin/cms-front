@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class Button {
   readonly label = input<string>();
-  readonly buttonAppearanceType = input<'elevated' | 'outlined' | 'filled' | 'tonal' | ''>('');
+  readonly buttonAppearanceType = input<'elevated' | 'outlined' | 'filled' | 'tonal' | 'text' | ''>('');
   readonly icon = input<string>();
   readonly disabled = input<boolean>();
 }

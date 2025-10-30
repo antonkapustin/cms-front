@@ -8,6 +8,8 @@
       label="Product category"
       controlName="categoryName"
       [options]="(categoryOptions | async) || []"
+      [removableOptions]="true"
+      (removeOption)="onRemoveCategory($event)"
     ></app-autocomplete>
   </div>
   <app-textarea label="Product description" controlName="description"></app-textarea>
@@ -19,8 +21,9 @@
     mat-dialog-close
   ></app-button>
   <app-button
-    label="Create"
+    [label]="data ? 'Update' : 'Create'"
     buttonAppearanceType="filled"
+    [disabled]="newProductForm.invalid"
     (click)="onClose()"
   ></app-button>
 </mat-dialog-actions>

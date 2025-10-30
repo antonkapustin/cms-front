@@ -4,12 +4,54 @@
   gap: 20px;
 
   ::ng-deep {
+    table {
+      width: 100%;
+      padding: 10px;
+    }
     .mat-mdc-header-row {
       background: var(--color-light-gray);
     }
     .mdc-data-table__content {
       border-radius: 10px;
       overflow: hidden;
+    }
+    .cdk-column-actions {
+      width: 100px;
+    }
+    .mat-mdc-row td {
+      height: 100%;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: none;
+      position: relative;
+      z-index: 1;
+    }
+    .mat-mdc-row td::before {
+      content: "";
+      height: calc(100% - 0.5rem);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      border-bottom: 1px solid lightgray;
+      border-top: 1px solid lightgray;
+    }
+    .mat-mdc-row td:first-child:before {
+      border-left: 1px solid lightgray;
+      border-top-left-radius: 7px;
+      border-bottom-left-radius: 7px;
+    }
+
+    .mat-mdc-row td:last-child:before {
+      border-right: 1px solid lightgray;
+      border-top-right-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+
+    .mat-mdc-row:hover td::before {
+      border-color: gray;
     }
   }
 }
@@ -29,5 +71,15 @@
 
   &__title {
     font-weight: 900;
+  }
+
+  &__actions {
+    max-width: max-content;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__row {
+    border: 1px solid black;
   }
 }

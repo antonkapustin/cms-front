@@ -1,31 +1,8 @@
-@let data = productData | async; @if(!data) {
+
 <app-empty-page
   [img]="'/assets/dashboard.png'"
   [title]="'There is no data. Setup your business'"
   [buttonText]="'Setup'"
+  (buttonClick)="openDialog()"
 ></app-empty-page>
-} @else {
-<div class="dashboard__card-box">
-  <app-card label="New sales" description="1.345" icon="graphic_eq"></app-card>
-  <app-card
-    label="New leads"
-    description="2.890"
-    icon="sensor_occupied"
-  ></app-card>
-  <app-card
-    label="Income per lead"
-    description="1.870"
-    icon="wallet"
-  ></app-card>
-  <app-card
-    label="Conversion rate"
-    description="5.10 %"
-    icon="candlestick_chart"
-  ></app-card>
-</div>
 
-<app-table
-  tableTitle="latest sales"
-  [tableData]="productData | async"
-></app-table>
-}

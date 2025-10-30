@@ -11,4 +11,8 @@ export class HeaderActionService {
   emit(event: HeaderAction):void {
     this._eventSignal.set(event);
   }
+
+  close(): void {
+    this._eventSignal.set(null);
+  }
 }

@@ -1,0 +1,15 @@
+<button
+  matIconButton
+  [matMenuTriggerFor]="menu"
+  aria-label="Example icon-button with a menu"
+>
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  @for(action of actions(); track $index) {
+  <button mat-menu-item (click)="onClickMenuBtn(action)">
+    <mat-icon>{{ actionsIcons[action] }}</mat-icon>
+    <span>{{ action | titlecase }}</span>
+  </button>
+  }
+</mat-menu>

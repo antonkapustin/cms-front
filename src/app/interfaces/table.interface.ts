@@ -10,5 +10,6 @@ export interface TableData<T> {
 
 export enum TableCellType {
     STRING = 'string',
-    COMPONENT = 'component'
+    COMPONENT = 'component',
+    ACTIONS = 'actions'
 }

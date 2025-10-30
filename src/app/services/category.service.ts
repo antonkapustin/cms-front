@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
+import { Apollo, gql, MutationResult } from 'apollo-angular';
 import { Category } from '../interfaces/category.interface';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 
 const GET_ALL_CATEGORIES = gql`
   {
@@ -12,17 +12,41 @@ const GET_ALL_CATEGORIES = gql`
   }
 `;
 
+const DELETE_CATEGORY = gql`
+  mutation removeCategory($id: Int!) {
+    removeCategory(id: $id)
+  }
+`
+
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
   private _apollo = inject(Apollo);
 
-  getAllCategories(): Observable<Category[]> {
+
+  private get _allCategoryQuery() {
     return this._apollo
-      .query<{ categories: Category[] }>({
+      .watchQuery<{ categories: Category[] }>({
         query: GET_ALL_CATEGORIES,
       })
+  }
+  getAllCategories(): Observable<Category[]> {
+    return this._allCategoryQuery.valueChanges
       .pipe(map((value) => value.data.categories));
+  }
+
+  refreshAllCategories(): void {
+    this._allCategoryQuery.refetch();
+  }
+
+  deleteCategory(id: number): Observable<MutationResult<boolean>> {
+    return this._apollo.mutate<boolean>({
+      mutation: DELETE_CATEGORY,
+      variables: { id },
+      context: { fetchOptions: { credentials: 'include' } },
+    }).pipe(
+      tap(() => this.refreshAllCategories())
+    );
   }
 }

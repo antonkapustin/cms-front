@@ -4,11 +4,12 @@
   title="No products found?"
   subtitle="Try to create more new products"
   buttonText="Create Product"
-  (buttonClick)="createProduct()"
+  (buttonClick)="openDialog()"
 ></app-empty-page>=
 } @else {
 <app-table
-  tableTitle="latest sales"
+  tableTitle="All Products"
   [tableData]="productData | async"
+  (actionsEmitter)="onActionClick($event)"
 ></app-table>
 }

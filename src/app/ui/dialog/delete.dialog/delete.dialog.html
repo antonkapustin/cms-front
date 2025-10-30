@@ -1,0 +1,16 @@
+<span class="dialog__title" mat-dialog-title>{{ data.title }}</span>
+<mat-dialog-content>
+  <span class="dialog__text">{{ data.text }}</span>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <app-button
+    label="Cancel"
+    buttonAppearanceType="filled"
+    (click)="onClose(false)"
+  ></app-button>
+  <app-button
+    label="Ok"
+    buttonAppearanceType="filled"
+    (click)="onClose(true)"
+  ></app-button>
+</mat-dialog-actions>

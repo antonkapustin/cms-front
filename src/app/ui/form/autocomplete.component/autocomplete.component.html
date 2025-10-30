@@ -3,14 +3,29 @@
   <input
     type="text"
     [placeholder]="placeholder()"
-    aria-label="Number"
     matInput
     [formControl]="formControl()"
     [matAutocomplete]="auto"
   />
-  <mat-autocomplete #auto="matAutocomplete">
-    @for (option of options(); track option) {
-    <mat-option [value]="option.name">{{ option.name }}</mat-option>
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    [hideSingleSelectionIndicator]="true"
+    [displayWith]="displayLabelFn"
+  >
+    @for (option of filterOptions$ | async; track option.id) {
+    <mat-option [value]="option.id" class="form__option">
+      <div class="form__option">
+        <span class="form__option-name">{{ option.name }}</span>
+        @if(removableOptions()) {
+        <button
+          matIconButton
+          (click)="$event.stopPropagation(); onRemoveOption(option.id)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        }
+      </div>
+    </mat-option>
     }
   </mat-autocomplete>
 </mat-form-field>

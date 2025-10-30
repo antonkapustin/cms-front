@@ -2,7 +2,7 @@ import { TitleCasePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-product-name.component',
+  standalone: true,
   imports: [TitleCasePipe],
   template: `
     <div class="product-name__container">
@@ -11,6 +11,7 @@ import { Component, Input } from '@angular/core';
       </div>
       <div class="product-name__text-box">
         <span class="product-name__title">{{ name | titlecase }}</span>
+        <span class="product-name__subtitle">{{ code | titlecase }}</span>
       </div>
     </div>
   `,
@@ -19,6 +20,20 @@ import { Component, Input } from '@angular/core';
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+    .product-name__text-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .product-name__title {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .product-name__subtitle {
+      font-size: 14px;
+      font-weight: 200;
+      color: var(--color-gray);
     }
     .product-name__img-box {
       position: relative;
@@ -36,4 +51,5 @@ import { Component, Input } from '@angular/core';
 export class ProductNameComponent {
   @Input() name!: string;
   @Input() img!: string;
+  @Input() code!: string;
 }
